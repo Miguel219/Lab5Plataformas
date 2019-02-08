@@ -68,8 +68,10 @@ class Main2Activity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val photoUri = data?.data
         // Do something with the photo based on Uri
-        val selectedImage = MediaStore.Images.Media.getBitmap(this.contentResolver, photoUri)
-        imageView.setImageBitmap(selectedImage)
-        hasImage = true
+        if (photoUri!=null) {
+            val selectedImage = MediaStore.Images.Media.getBitmap(this.contentResolver, photoUri)
+            imageView.setImageBitmap(selectedImage)
+            hasImage = true
+        }
     }
 }

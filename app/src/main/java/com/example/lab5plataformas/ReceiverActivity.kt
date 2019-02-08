@@ -4,8 +4,6 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.view.View
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_receiver.*
 
 class ReceiverActivity : AppCompatActivity() {
@@ -30,17 +28,13 @@ class ReceiverActivity : AppCompatActivity() {
             val snackbar = Snackbar.make(root_layout, "Correo enviado desde $senderString hacia $receiverString ", Snackbar.LENGTH_INDEFINITE)
             snackbar.setAction("Cerrar") {
                 snackbar.dismiss()
-                returnToView()
+                Thread.sleep(100)
+                val intent: Intent = Intent(applicationContext, Main3Activity::class.java)
+                startActivity(intent)
+                finish()
             }
             snackbar.show()
-
         }
-    }
-
-    private  fun returnToView(){
-        val intent: Intent = Intent(applicationContext, Main3Activity::class.java)
-        startActivity(intent)
-        finish()
     }
 
     private fun handleSendText(intent: Intent) {
